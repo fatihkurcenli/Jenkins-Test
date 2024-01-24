@@ -18,6 +18,12 @@ android {
     }
 
     buildTypes {
+        debug{
+            minifyEnabled false
+            shrinkResources false
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -30,7 +36,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach { output ->
+            def formattedDate = new Date().format("yyyyMMddHHmmss")
+            output.outputFileName = "app-${variant.name}-${formattedDate}.apk"
+        }
+    }
+
 }
+
+
 
 dependencies {
 
