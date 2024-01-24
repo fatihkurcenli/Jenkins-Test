@@ -25,4 +25,12 @@ pipeline {
                 description: 'Uygulama test ortamlarında çalışacak ise TRUE, canlı ortamda çalışacak ise FALSE seçilmelidir.'
         )
     }
+
+        stages {
+            stage('Hello') {
+                steps {
+                    echo 'Hello World'
+                }
+            }
+        }
 }
