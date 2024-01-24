@@ -1,49 +1,40 @@
-def signing = ["Release", "Debug", "Unsigned"]
-
 pipeline {
     agent any
 
-    stage{
-   steps{
-    checkout scmGit(branches:name'*/master',extensions:[],
-    userRemoteConfigs:[[url:'https://github.com/fatihkurcenli/Jenkins-Test.git'])
-   }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Git repoyu çek
+                checkout scm
+            }
+        }
 
-    stage('BuildClean'){
-    steps{
-    sh 'gradle clean build'}}
-
-
-    options {
-        // Stop the build early in case of compile or test failures
-        skipStagesAfterUnstable()
-    }
-
-    parameters {
-        choice(
-                name: 'Signing',
-                choices: signing,
-                description: 'Paketin imzalı, imzasız olması seçimidir'
-        )
-        booleanParam(
-                name: 'SSL_PINNING_ENABLED',
-                defaultValue: 'true',
-                description: 'Test working'
-        )
-        choice(
-                name: 'IS_TEST_BUILD',
-                choices: 'false\ntrue',
-                description: 'Uygulama test ortamlarında çalışacak ise TRUE, canlı ortamda çalışacak ise FALSE seçilmelidir.'
-        )
-    }
-
-
-        stages {
-            stage('Hello') {
-                steps {
-                    echo 'Hello World'
+        stage('Build') {
+            steps {
+                // Gradle ile projeyi derle
+                script {
+                    def gradleHome = tool 'Gradle'
+                    def androidHome = tool 'Android_SDK'
+                    sh "${gradleHome}/bin/gradle clean assembleDebug"
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                // Test aşamasını buraya ekleyin (isteğe bağlı)
+                script {
+                    def gradleHome = tool 'Gradle'
+                    sh "${gradleHome}/bin/gradle test"
+                }
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                // APK dosyasını arşivle
+                archiveArtifacts artifacts: '**/build/outputs/**/*.apk', fingerprint: true
+            }
+        }
+    }
 }
