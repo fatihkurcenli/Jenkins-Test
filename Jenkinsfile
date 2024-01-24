@@ -3,6 +3,18 @@ def signing = ["Release", "Debug", "Unsigned"]
 pipeline {
     agent any
 
+    stage{
+   steps{
+    checkout scmGit(branches:name'*/master',extensions:[],
+    userRemoteConfigs:[[url:'https://github.com/fatihkurcenli/Jenkins-Test.git'])
+   }
+    }
+
+    stage('BuildClean'){
+    steps{
+    sh 'gradle clean build'}}
+
+
     options {
         // Stop the build early in case of compile or test failures
         skipStagesAfterUnstable()
@@ -25,6 +37,7 @@ pipeline {
                 description: 'Uygulama test ortamlarında çalışacak ise TRUE, canlı ortamda çalışacak ise FALSE seçilmelidir.'
         )
     }
+
 
         stages {
             stage('Hello') {
