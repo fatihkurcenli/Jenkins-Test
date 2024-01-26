@@ -29,11 +29,11 @@ pipeline {
                 }
             }
         }
-        stage('Archive Artifacts') {
+       /*  stage('Archive Artifacts') {
             steps {
                 // APK dosyasını arşivle
-                archiveArtifacts artifacts: '**/build/outputs/**/*.apk', fingerprint: true
+                archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
             }
-        }
+        } */
     }
 }
