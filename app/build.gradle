@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+
 def getCurrentBranch() {
     def branch = ""
     def proc = "git name-rev --name-only HEAD".execute()
@@ -10,6 +11,7 @@ def getCurrentBranch() {
     proc.waitFor()
     branch
 }
+
 String branchName = getCurrentBranch()
 
 
@@ -30,7 +32,7 @@ android {
     }
 
     buildTypes {
-        debug{
+        debug {
             minifyEnabled false
             shrinkResources false
             applicationIdSuffix ".debug"
@@ -56,8 +58,11 @@ android {
         }
     }
 
-}
+    buildFeatures {
+        buildConfig true
+    }
 
+}
 
 
 dependencies {
