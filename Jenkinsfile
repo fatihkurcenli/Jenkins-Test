@@ -16,7 +16,7 @@ pipeline {
         steps {
                         // Compile the app and its dependencies
                         //sh "chmod +x gradlew"
-                        sh ".\gradlew clean"
+                       sh '.\gradlew build'
                         echo "Branch name: ${env.BRANCH_NAME}"
                     }
                 }
