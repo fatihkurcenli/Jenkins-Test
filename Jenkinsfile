@@ -12,7 +12,7 @@ pipeline {
                 steps {
                     script {
                         checkout([$class: 'GitSCM',
-                                  branches: [[name: 'master','development']],
+                                  branches: [[name: 'development']],
                                   userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']]])
                     }
                 }
