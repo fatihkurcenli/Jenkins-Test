@@ -44,7 +44,8 @@ pipeline {
          stage('Archive Artifacts') {
             steps {
                 // APK dosyasını arşivle
-                archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
+                //archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
+                archiveArtifacts artifacts: 'app/build/outputs/apk/debug/*.apk', fingerprint: true
             }
         }
     }
