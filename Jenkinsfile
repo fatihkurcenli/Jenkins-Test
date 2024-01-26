@@ -29,11 +29,11 @@ pipeline {
 
         stage('Build') {
             agent any
-                            when {
-                                expression {
-                                    return !(env.BRANCH_NAME ==~ /PR-\d+/)
-                                }
-                            }
+                      when {
+                               expression {
+                                   return !(env.BRANCH_NAME ==~ /PR-\d+/)
+                               }
+                         }
             steps {
                 script {
                     echo "Branch name: ${env.BRANCH_NAME}"
@@ -41,11 +41,11 @@ pipeline {
                 }
             }
         }
-       /*  stage('Archive Artifacts') {
+         stage('Archive Artifacts') {
             steps {
                 // APK dosyasını arşivle
                 archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
             }
-        } */
+        }
     }
 }
