@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    options {
+        // Stop the build early in case of compile or test failures
+        skipStagesAfterUnstable()
+    }
+
     stages {
 
            stage('Checkout') {
@@ -23,9 +28,16 @@ pipeline {
                 }
 
         stage('Build') {
+            agent any
+                            when {
+                                expression {
+                                    return !(env.BRANCH_NAME ==~ /PR-\d+/)
+                                }
+                            }
             steps {
                 script {
-                    sh "gradle assembleDebug"
+                    echo "Branch name: ${env.BRANCH_NAME}"
+                    bat "gradle assembleDebug"
                 }
             }
         }
