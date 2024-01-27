@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+      parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH_NAME', type: 'PT_BRANCH'
+      }
+
     options {
         // Stop the build early in case of compile or test failures
         skipStagesAfterUnstable()
