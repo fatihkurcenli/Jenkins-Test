@@ -1,26 +1,12 @@
 pipeline {
     agent any
 
-      parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH_NAME', type: 'PT_BRANCH'
-      }
-
     options {
         // Stop the build early in case of compile or test failures
         skipStagesAfterUnstable()
     }
 
-  stages {
-    stage('branchler') {
-      steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/jenkinsci/git-parameter-plugin.git'
-      }
-    }
-  }
     stages {
-
-
-
        stage('Clean') {
          steps {
                             bat 'gradle clean'
