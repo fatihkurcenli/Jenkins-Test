@@ -8,15 +8,20 @@ pipeline {
 
     stages {
 
-    stage('Clean') {
-        steps {
+       stage('Clean') {
+         steps {
+                            bat 'gradle clean'
+                             echo "Branch name: ${params.BRANCH_NAME}"
+                           }
+               /*   steps {
                       // Compile the app and its dependencies
                      //sh "chmod +x gradlew"
                     //sh '.\gradlew build'
                       bat 'gradle build --status'
                       echo "Branch name: ${params.BRANCH_NAME}"
-                    }
+                    } */
                 }
+
 
         stage('Build') {
             agent any
