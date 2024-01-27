@@ -12,6 +12,12 @@ pipeline {
 
     stages {
 
+    stage('Example') {
+                  steps {
+                    git branch: "${params.BRANCH}", url: 'https://github.com/fatihkurcenli/Jenkins-Test.git'
+                  }
+                }
+
        stage('Clean') {
          steps {
                             bat 'gradle clean'
