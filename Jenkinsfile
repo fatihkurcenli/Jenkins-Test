@@ -12,7 +12,7 @@ pipeline {
                         // Compile the app and its dependencies
                         //sh "chmod +x gradlew"
                        //sh '.\gradlew build'
-                        bat 'gradle build'
+                        bat 'gradle build --status'
                         echo "Branch name: ${env.BRANCH_NAME}"
                     }
                 }
