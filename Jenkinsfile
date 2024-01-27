@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+      parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH_NAME', type: 'PT_BRANCH'
+      }
+
     options {
         // Stop the build early in case of compile or test failures
         skipDefaultCheckout(true)
@@ -9,13 +13,20 @@ pipeline {
     }
 
     stages {
+
+           stage('Example') {
+              steps {
+                git branch: "${params.BRANCH}", url: 'https://github.com/fatihkurcenli/Jenkins-Test.git'
+              }
+            }
+
     stage('Clean') {
         steps {
                         // Compile the app and its dependencies
                         //sh "chmod +x gradlew"
                        //sh '.\gradlew build'
                         bat 'gradle build --status'
-                        echo "Branch name: ${env.BRANCH_NAME}"
+                        echo "Branch name: ${params.BRANCH_NAME}"
                     }
                 }
 
