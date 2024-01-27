@@ -10,13 +10,16 @@ pipeline {
         skipStagesAfterUnstable()
     }
 
+  stages {
+    stage('branchler') {
+      steps {
+        git branch: "${params.BRANCH}", url: 'https://github.com/jenkinsci/git-parameter-plugin.git'
+      }
+    }
+  }
     stages {
 
-    stage('Example') {
-                  steps {
-                    git branch: "${params.BRANCH}", url: 'https://github.com/fatihkurcenli/Jenkins-Test.git'
-                  }
-                }
+
 
        stage('Clean') {
          steps {
