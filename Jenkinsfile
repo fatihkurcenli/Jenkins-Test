@@ -7,16 +7,6 @@ pipeline {
     }
 
     stages {
-
-           stage('Checkout') {
-                steps {
-                    script {
-                        checkout([$class: 'GitSCM',
-                                  branches: [[name: 'development']],
-                                  userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']]])
-                    }
-                }
-            }
     stage('Clean') {
         steps {
                         // Compile the app and its dependencies
