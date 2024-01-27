@@ -7,18 +7,18 @@ pipeline {
 
     options {
         // Stop the build early in case of compile or test failures
-        skipDefaultCheckout(true)
+//        skipDefaultCheckout(true)
         skipStagesAfterUnstable()
 
     }
 
     stages {
 
-           stage('Example') {
+       /*     stage('Example') {
               steps {
                 git branch: "${params.BRANCH}", url: 'https://github.com/fatihkurcenli/Jenkins-Test.git'
               }
-            }
+            } */
 
     stage('Clean') {
         steps {
