@@ -12,13 +12,13 @@ pipeline {
                             bat 'gradle clean'
                              echo "Branch name: ${params.BRANCH_NAME}"
                            }
-                  steps {
+          /*         steps {
                       // Compile the app and its dependencies
                      //sh "chmod +x gradlew"
                     //sh '.\gradlew build'
                       bat 'gradle build --status'
                       echo "Branch name: ${params.BRANCH_NAME}"
-                    }
+                    } */
                 }
 
 
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     echo "Branch name: ${env.BRANCH_NAME}"
-                    bat "gradle assembleDebug"
+                    bat "gradle assembleDebug --status"
                 }
             }
         }
