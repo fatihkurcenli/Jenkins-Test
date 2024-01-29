@@ -40,9 +40,11 @@ pipeline {
             steps {
                 // APK dosyasını arşivle
                 echo "$WORKSPACE"
+                echo "$WJENKINS_HOME"
                 echo "${env.WORKSPACE}"
                 echo "${params.WORKSPACE}"
                 //archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
+                archiveArtifacts artifacts: '${JENKINS_HOME}/workspace/${params.BRANCH_NAME}/app/build/outputs/apk/debug/*.apk', fingerprint: true
                 archiveArtifacts artifacts: '**/app/build/outputs/apk/debug/*.apk', fingerprint: true
             }
         }
