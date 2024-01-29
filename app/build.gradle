@@ -74,7 +74,6 @@ ktlint {
     reporters {
         reporter(ReporterType.HTML)
         reporter(ReporterType.CHECKSTYLE)
-        reporter(ReporterType.SARIF)
         reporter(ReporterType.JSON)
     }
 }
