@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val a = findViewById<TextView>(R.id.txt_hello_text)
-        a.text = "ChangedName"
+        a.text = "ChangedName"//hello working test moruq
         Log.e("second", "second")
     }
 }

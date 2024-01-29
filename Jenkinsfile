@@ -21,6 +21,13 @@ pipeline {
                     } */
                 }
 
+                     stage('staticAnalysis') {
+                         steps {
+                                            bat 'gradle ktlintcheck'
+                                             echo "Branch name: ${params.BRANCH_NAME}"
+                                           }
+                                }
+
 
         stage('Build') {
                       /* when {
@@ -43,6 +50,7 @@ pipeline {
                 echo "${params.WORKSPACE}"
                 //archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
                archiveArtifacts artifacts: 'app/build/outputs/apk/debug/*.apk', fingerprint: true
+               archiveArtifacts artifacts: 'app/build/reports/ktlint/ktlintMainSourceSetCheck/(.*)', fingerprint: true
             }
         }
     }

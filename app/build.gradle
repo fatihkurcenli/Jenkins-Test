@@ -1,6 +1,9 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jlleitschuh.gradle.ktlint' version '11.0.0'
 }
 
 def getCurrentBranch() {
@@ -62,6 +65,18 @@ android {
         buildConfig true
     }
 
+}
+
+ktlint {
+    android = true
+    outputColorName = "RED"
+    ignoreFailures = true
+    reporters {
+        reporter(ReporterType.HTML)
+        reporter(ReporterType.CHECKSTYLE)
+        reporter(ReporterType.SARIF)
+        reporter(ReporterType.JSON)
+    }
 }
 
 
