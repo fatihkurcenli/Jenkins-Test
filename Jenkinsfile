@@ -52,7 +52,7 @@ pipeline {
                 echo "${env.WORKSPACE}"
                 echo "${params.WORKSPACE}"
                 //archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
-               archiveArtifacts artifacts: '**/app/build/outputs/apk/debug/*.apk', fingerprint: true
+               archiveArtifacts artifacts: 'app/build/outputs/apk/debug/*.apk', fingerprint: true
             }
         }
     }
