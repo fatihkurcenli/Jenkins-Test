@@ -7,6 +7,10 @@ pipeline {
     }
 
     stages {
+    deleteDir()
+    checkout scmGit(
+        branches: [[name: '*/master']],
+        userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']])
 
    /*     stage('Clean') {
          steps {
