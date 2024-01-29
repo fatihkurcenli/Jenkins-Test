@@ -7,11 +7,6 @@ pipeline {
     }
 
     stages {
-    scmGit(branches: [[name: '*/master']], extensions: [[$class: 'WipeWorkspace']], userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']])
-/*     checkout scmGit(
-        branches: [[name: '*//* master']],
-        userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']]) */
-
    /*     stage('Clean') {
          steps {
                             bat 'gradle clean'
