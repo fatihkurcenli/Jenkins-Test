@@ -51,8 +51,6 @@ pipeline {
                 //archiveArtifacts artifacts: '**//* build/outputs *//** /* *//*.apk', fingerprint: true
                archiveArtifacts artifacts: 'app/build/outputs/apk/debug/*.apk', fingerprint: true
                archiveArtifacts artifacts: 'app/build/reports/ktlint/ktlintMainSourceSetCheck/*', fingerprint: true
-               androidLint pattern: '**/lint-results-*.xml'
-              // androidLint pattern: 'app/build/reports/ktlint/ktlintMainSourceSetCheck/*'
             }
         }
     }
