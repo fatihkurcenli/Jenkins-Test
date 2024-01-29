@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-   /*     stage('Clean') {
+        stage('Clean') {
          steps {
                             bat 'gradle clean'
                              echo "Branch name: ${params.BRANCH_NAME}"
@@ -19,16 +19,16 @@ pipeline {
                       bat 'gradle build --status'
                       echo "Branch name: ${params.BRANCH_NAME}"
                     }
-                } */
+                }
 
 
         stage('Build') {
             agent any
-                      when {
+                      /* when {
                                expression {
                                    return !(env.BRANCH_NAME ==~ /PR-\d+/)
                                }
-                         }
+                         } */
             steps {
                 script {
                     echo "Branch name: ${env.BRANCH_NAME}"
