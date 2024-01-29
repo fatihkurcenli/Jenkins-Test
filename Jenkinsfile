@@ -23,7 +23,6 @@ pipeline {
 
 
         stage('Build') {
-            agent any
                       /* when {
                                expression {
                                    return !(env.BRANCH_NAME ==~ /PR-\d+/)
