@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     echo "Branch name: ${env.BRANCH_NAME}"
-                    bat "gradle assembleDebug --status"
+                    bat "gradle assembleDebug"
                 }
             }
         }
