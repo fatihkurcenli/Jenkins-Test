@@ -8,6 +8,7 @@ pipeline {
 
     stages {
     deleteDir()
+    scmGit(branches: [[name: '*/master']], extensions: [[$class: 'WipeWorkspace']], userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']])
 /*     checkout scmGit(
         branches: [[name: '*//* master']],
         userRemoteConfigs: [[url: 'https://github.com/fatihkurcenli/Jenkins-Test.git']]) */
